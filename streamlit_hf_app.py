@@ -21,7 +21,7 @@ model = {"qwen2.5-72b": "Qwen/Qwen2.5-72B-Instruct",
          "llama3.1-70b": "meta-llama/Meta-Llama-3.1-70B-Instruct",
          }
 
-model_select = model["qwen2.5-72b"]
+model_select = model["llama3.1-70b"]
 
 # ------- Store conversations with session state --------#
 if 'msg_history' not in st.session_state:
