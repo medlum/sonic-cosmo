@@ -2,6 +2,7 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 from hf_utils import *
 from streamlit_extras.grid import grid
+import os
 
 # ---------set up page config -------------#
 st.set_page_config(page_title="Cosmo the Chatdog",
@@ -11,7 +12,9 @@ st.set_page_config(page_title="Cosmo the Chatdog",
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # --- Initialize the Inference Client with the API key ----#
-client = InferenceClient(token=st.secrets["huggingfacehub_api_token"])
+hf_token = st.secrets["HUGGINGFACE_TOKEN"]["token"]
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
+client = InferenceClient()
 
 # ---------set model ------------#
 model = {"qwen2.5-72b": "Qwen/Qwen2.5-72B-Instruct",
