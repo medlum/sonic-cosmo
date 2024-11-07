@@ -96,7 +96,7 @@ if user_input := (st.chat_input("Type your message or click a button...") or but
     # ----- Create a placeholder for the streaming response ------- #
     with st.empty():
         # Stream the response
-        stream = client.chat.completions.create(
+        stream = client.chat_completion(
             model=model_select,
             messages=st.session_state.msg_history,
             temperature=0.5,
