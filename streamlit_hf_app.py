@@ -14,7 +14,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 # --- Initialize the Inference Client with the API key ----#
 hf_token = st.secrets["HUGGINGFACE_TOKEN"]["token"]
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
-client = InferenceClient(api=hf_token)
+client = InferenceClient(token=hf_token)
 
 # ---------set model ------------#
 model = {"qwen2.5-72b": "Qwen/Qwen2.5-72B-Instruct",
