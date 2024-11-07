@@ -11,7 +11,7 @@ st.set_page_config(page_title="Cosmo the Chatdog",
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # --- Initialize the Inference Client with the API key ----#
-client = InferenceClient(api_key=st.secrets["huggingfacehub_api_token"])
+client = InferenceClient(token=st.secrets["huggingfacehub_api_token"])
 
 # ---------set model ------------#
 model = {"qwen2.5-72b": "Qwen/Qwen2.5-72B-Instruct",
