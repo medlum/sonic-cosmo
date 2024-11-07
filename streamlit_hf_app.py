@@ -109,9 +109,19 @@ if user_input := (st.chat_input("Type your message or click a button...") or but
 
         # Stream the response and update the placeholder in real-time
         for chunk in stream:
-            if 'delta' in chunk.choices[0] and 'content' in chunk.choices[0].delta:
-                collected_response += chunk.choices[0].delta.content
-                st.chat_message("assistant").write(collected_response)
+          # a hack to handle JSONDecodeError as
+          # stream in the last iteration contains a "stop" in  
+          # ChatCompletionStreamOutput for non Open AI models
+            if chunk.choices[0].finish_reason == 'stop':
+              break
+            else:
+              collected_response += chunk.choices[0].delta.content
+              st.chat_message("assistant").write(collected_response)
+
+            #if 'delta' in chunk.choices[0] and 'content' in chunk.choices[0].delta:
+            #    collected_response += chunk.choices[0].delta.content
+            #    st.chat_message("assistant").write(collected_response)
+            
 
     # Add the assistant's response to the conversation history
     st.session_state.msg_history.append(
