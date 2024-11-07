@@ -5,8 +5,8 @@ from streamlit_extras.grid import grid
 import os
 
 # ---------set up page config -------------#
-st.set_page_config(page_title="Cosmo the Chatdog",
-                   layout="centered", page_icon="🐶", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Sonic Cosmo",
+                   layout="wide", page_icon="🐶", initial_sidebar_state="collapsed")
 
 # ---------set button css-------------#
 st.markdown(custom_css, unsafe_allow_html=True)
